@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>45.png</file>
+        <file>print.png</file>
+    </qresource>
+    <qresource prefix="/translation">
+        <file>QtLanguage1.qm</file>
+    </qresource>
+</RCC>

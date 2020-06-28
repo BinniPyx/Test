@@ -31,7 +31,7 @@ private:
     QMenu* mProper=nullptr;
     QMenu* subMenu=nullptr;
     QMdiArea* mdiAre= nullptr;
-    QPlainTextEdit* plainTextEdit=nullptr;
+    QPlainTextEdit* op=nullptr;
 
 protected:
      void changeEvent(QEvent* event) override;
@@ -48,5 +48,6 @@ private slots:
     void on_pushButton_2_clicked();
     void on_toolButton_clicked();
     void on_comboBox_3_currentTextChanged(const QString &arg1);
+
 };
 #endif // MAINWINDOW_H

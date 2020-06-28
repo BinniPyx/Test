@@ -10,22 +10,26 @@
 #include <QToolBar>
 #include <QDockWidget>
 #include <QMenuBar>
+#include <QGridLayout>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    plainTextEdit= new QPlainTextEdit();
+
 /////////////////////////////////////////////////////////////////Menu bar/Tool bar position//////////////////////////////////////////////
 
+op=new QPlainTextEdit();
 
 QIcon ic= QIcon(":/print.png");
 
-QMenuBar* mb=new QMenuBar(this);
-mb->addAction("sdssssssssssssssssssssssssssssssssssssssssssssssssssssssssssf");
+
 ui->toolButton->setIcon(ic);
 QToolBar* mbr=new QToolBar(this);
 mbr->addWidget(ui->toolButton);
+mbr->addWidget(ui->comboBox);
+mbr->addWidget(ui->comboBox_2);
+mbr->addWidget(ui->comboBox_3);
 
 
 m_open=new QMenu(tr("Открыть"));
@@ -65,9 +69,13 @@ i=i+2;
 QGridLayout* gridLayout =new QGridLayout(this);
 ui->centralwidget->setLayout(gridLayout);
 
-gridLayout->addWidget(mdiAre,1,0,10,1);
-QPlainTextEdit *op=new QPlainTextEdit();
-mdiAre->addSubWindow(plainTextEdit);
+
+gridLayout->addWidget(mbr,0,0,1,1);
+gridLayout->addWidget(mdiAre,1,0,1,1);
+
+
+
+mdiAre->addSubWindow(op);
 mdiAre->setViewMode(QMdiArea::TabbedView);
 connect(action,SIGNAL(changed()),SLOT(changeThem()));
 
@@ -98,7 +106,7 @@ void MainWindow::saveFile()
             if(file.open(QFile::WriteOnly|QFile::NewOnly))
             {
                 QTextStream stream(&file);
-                stream<<plainTextEdit->toPlainText();
+                stream<<op->toPlainText();
                 file.close();
             }
         }
@@ -144,7 +152,7 @@ void MainWindow::openFileRO()
 void MainWindow::on_comboBox_2_currentTextChanged(const QString &arg1)
 {
 
-    plainTextEdit->setStyleSheet("font-size:"+arg1+"px;");
+    op->setStyleSheet("font-size:"+arg1+"px;");
 
 }
 
@@ -156,19 +164,20 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_comboBox_editTextChanged(const QString &arg1)
 {
+
     QFont font=QFont(arg1);
-    plainTextEdit->setFont(font);
+    op->setFont(font);
 }
 
 void MainWindow::changeThem()
 {
    if(action->isChecked()==true){
        this->setStyleSheet("background-image: url(:/45.png)");
-       plainTextEdit->setStyleSheet("color: white");
+       op->setStyleSheet("color: white");
    }
    if(action->isChecked()==false){
        this->setStyleSheet("");
-       plainTextEdit->setStyleSheet("");
+       op->setStyleSheet("");
    }
 
 }
@@ -189,7 +198,7 @@ void MainWindow::on_toolButton_clicked()
      if(dlg.exec()!=QDialog::Accepted){
          return;
      }
-     QString str=plainTextEdit->toPlainText();
+     QString str=op->toPlainText();
      QChar *list=str.data();
        QStringList strlst;
      int line=0, cursor=0;
@@ -253,3 +262,5 @@ void MainWindow::on_comboBox_3_currentTextChanged(const QString &arg1)
      mProper->setTitle("Настройки");
     }
 }
+
+

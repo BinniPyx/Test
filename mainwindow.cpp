@@ -11,6 +11,7 @@
 #include <QDockWidget>
 #include <QMenuBar>
 #include <QGridLayout>
+#include <wproperties.h>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -44,8 +45,10 @@ mProper=new QMenu(tr("Настройки"));
 subMenu= new QMenu(tr("Тема"));
 action= subMenu->addAction(tr("Темная"));
 action->setCheckable(true);
-action=mProper->addAction("Параметры");
-//mProper->addSeparator();
+property=mProper->addAction(("Параметры"),this,&MainWindow::openWidgetProperties);
+
+
+mProper->addSeparator();
 
 
 mProper->addMenu(subMenu);
@@ -261,6 +264,12 @@ void MainWindow::on_comboBox_3_currentTextChanged(const QString &arg1)
      subMenu->setTitle("Тема");
      mProper->setTitle("Настройки");
     }
+}
+
+void MainWindow::openWidgetProperties()
+{
+WProperties *wp=new WProperties;
+wp->show();
 }
 
 

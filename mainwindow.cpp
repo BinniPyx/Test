@@ -77,7 +77,7 @@ gridLayout->addWidget(mbr,0,0,1,1);
 gridLayout->addWidget(mdiAre,1,0,1,1);
 
 
-
+op->setWindowTitle("NewFile");
 mdiAre->addSubWindow(op);
 mdiAre->setViewMode(QMdiArea::TabbedView);
 connect(action,SIGNAL(changed()),SLOT(changeThem()));

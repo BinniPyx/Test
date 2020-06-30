@@ -2,6 +2,8 @@
     <qresource prefix="/">
         <file>45.png</file>
         <file>print.png</file>
+        <file>Sreda.png</file>
+        <file>SredaWhite.png</file>
     </qresource>
     <qresource prefix="/translation">
         <file>QtLanguage1.qm</file>

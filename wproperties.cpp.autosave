@@ -71,4 +71,5 @@ void WProperties::on_comboBox_3_currentTextChanged(const QString &arg1)
      mw->mProper->setTitle("Настройки");
     }
     mw->update();
+    main.w
 }

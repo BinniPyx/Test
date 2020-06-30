@@ -20,6 +20,8 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    int Them;      //Переменаая для смены темы. 
+    int Lenguage; //Переменная для смены языка.
     QAction* action;
     QAction* property;
     QMenu* m_open=nullptr;
@@ -33,6 +35,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+     void setRusLenguage();
+     void setEnglishLenguage();
+     void setFlatTheme();
+     void setWhiteTheme();
 
 protected:
      void changeEvent(QEvent* event) override;

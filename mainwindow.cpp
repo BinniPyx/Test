@@ -12,6 +12,7 @@
 #include <QMenuBar>
 #include <QGridLayout>
 #include <wproperties.h>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -20,10 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 /////////////////////////////////////////////////////////////////Menu bar/Tool bar position//////////////////////////////////////////////
 
-op=new QPlainTextEdit();
+op=new TextEditContext();
 
 QIcon ic= QIcon(":/print.png");
-
 
 ui->toolButton->setIcon(ic);
 QToolBar* mbr=new QToolBar(this);
@@ -82,9 +82,9 @@ mdiAre->addSubWindow(op);
 mdiAre->setViewMode(QMdiArea::TabbedView);
 connect(action,SIGNAL(changed()),SLOT(changeThem()));
 
-
-
-
+///////////////////////////////////////////////////////Context Menu/////////////////////////////////////////////////////////////////////////////////
+TEC=new TextEditContext();
+connect(ui->comboBox,SIGNAL(editTextChanged(const QString&)),TEC,SLOT(setFont(const QString&)));
 
 }
 
@@ -97,6 +97,9 @@ void MainWindow::changeEvent(QEvent *event)
 {
 
 }
+
+
+
 
 void MainWindow::saveFile()
 {
@@ -165,12 +168,11 @@ void MainWindow::on_pushButton_clicked()
   //  qApp->installTranslator(&translate);
 }
 
-void MainWindow::on_comboBox_editTextChanged(const QString &arg1)
+/*void MainWindow::on_comboBox_editTextChanged(const QString &arg1)
 {
 
-    QFont font=QFont(arg1);
-    op->setFont(font);
-}
+    //emit signalSwitchFont(arg1);
+}*/
 
 void MainWindow::changeThem()
 {

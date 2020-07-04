@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    texteditcontext.cpp \
     wproperties.cpp
 
 HEADERS += \
     mainwindow.h \
+    texteditcontext.h \
     wproperties.h
 
 FORMS += \

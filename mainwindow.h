@@ -10,6 +10,8 @@
 #include <QPainter>
 #include <QMdiArea>
 #include <QPlainTextEdit>
+#include <QMouseEvent>
+#include <texteditcontext.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -26,12 +28,13 @@ public:
     QMenu* mProper=nullptr;
     QMenu* subMenu=nullptr;
     QMdiArea* mdiAre= nullptr;
-    QPlainTextEdit* op=nullptr;
+    TextEditContext* op=nullptr;
 
     ~MainWindow();
 
 
 private:
+    TextEditContext* TEC;
     Ui::MainWindow *ui;
 
 protected:
@@ -44,14 +47,14 @@ private slots:
     void openFileRW();
     void on_comboBox_2_currentTextChanged(const QString &arg1);
     void on_pushButton_clicked();
-    void on_comboBox_editTextChanged(const QString &arg1);
+   // void on_comboBox_editTextChanged(const QString &arg1);
     void changeThem();
     void on_pushButton_2_clicked();
     void on_toolButton_clicked();
     void on_comboBox_3_currentTextChanged(const QString &arg1);
     void openWidgetProperties();
 signals:
-
+void signalSwitchFont(const QString &font);
 
 };
 #endif // MAINWINDOW_H
